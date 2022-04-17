@@ -1,0 +1,1263 @@
+#! D:/Nuke/Nuke13.1v2/nuke-13.1.2.dll -nx
+#write_info Write1 file:"D:/Trinity/5c1/Data/HulaSub/Hula.Motion.%4d.tiff" format:"2048 1080 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 68" fps:"24" colorspace:"default (sRGB)" datatype:"8 bit" transfer:"unknown" views:"main" timecode:"00:00:00:00" colorManagement:"Nuke"
+version 13.1 v2
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1917" h="981" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1254" stretch="1"/>
+            <splitter orientation="2">
+                <split size="551"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="388"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "E:/Sem 2/Motion Picture Engineering/Akshkumar_assignment1.nk"
+ frame 47
+ last_frame 68
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x8e388e00
+ label "3D MRF"
+ note_font_size 42
+ xpos -627
+ ypos -222
+ bdwidth 443
+ bdheight 639
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode10
+ tile_color 0xffb7d1ff
+ note_font_size 42
+ xpos -3999
+ ypos -153
+ bdwidth 510
+ bdheight 451
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode11
+ tile_color 0x8e388e00
+ label "Difference between GT and Output"
+ note_font_size 15
+ xpos -3228
+ ypos 605
+ bdwidth 341
+ bdheight 217
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode12
+ tile_color 0x71c67100
+ label "Only Foreground"
+ note_font_size 15
+ xpos -3867
+ ypos 627
+ bdwidth 248
+ bdheight 186
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode13
+ tile_color 0x71c67100
+ label "Using smoothness \nfilter"
+ note_font_size 15
+ xpos -1236
+ ypos 634
+ bdwidth 216
+ bdheight 176
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode14
+ tile_color 0x8e8e3800
+ label "3D-MRF WITH MOTION \nOUTPUT USING EIGHT\nNEIBHOURHOOD PIXEL"
+ note_font Verdana
+ note_font_size 10
+ xpos -1010
+ ypos 634
+ bdwidth 182
+ bdheight 174
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x8e8e3800
+ label "3D MRF MOTION"
+ note_font_size 42
+ xpos -1735
+ ypos -211
+ bdwidth 981
+ bdheight 633
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x373b8eff
+ label "2D MRF"
+ note_font_size 42
+ xpos -60
+ ypos -231
+ bdwidth 309
+ bdheight 626
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode4
+ tile_color 0x71c67100
+ label "Motion copensated bin. matte\n"
+ note_font_size 42
+ xpos -2423
+ ypos -215
+ bdwidth 603
+ bdheight 638
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode5
+ tile_color 0xc4c45aff
+ label "3D-MRF WITH MOTION \nOUTPUT USING ONE\nNEIBHOURHOOD PIXEL"
+ note_font_size 10
+ xpos -1486
+ ypos 634
+ bdwidth 244
+ bdheight 173
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode6
+ tile_color 0x388e8e00
+ label "3D-MRF OUTPUT"
+ note_font_size 15
+ xpos -486
+ ypos 579
+ bdwidth 226
+ bdheight 235
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode7
+ tile_color 0x5837c6ff
+ label "2D-MRF OUTPUT"
+ note_font_size 15
+ xpos 38
+ ypos 542
+ bdwidth 210
+ bdheight 221
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode8
+ tile_color 0x39c3d6ff
+ label "ML Output"
+ note_font_size 15
+ xpos 408
+ ypos 530
+ bdwidth 194
+ bdheight 230
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode9
+ tile_color 0xaaaaaa00
+ label "comparision with ground truth"
+ note_font_size 15
+ xpos -3378
+ ypos -148
+ bdwidth 596
+ bdheight 439
+}
+BackdropNode {
+ inputs 0
+ name Input
+ tile_color 0x328e26ff
+ label Input
+ note_font_size 28
+ xpos 386
+ ypos -528
+ bdwidth 232
+ bdheight 176
+}
+BackdropNode {
+ inputs 0
+ name Likelihhod_keyer
+ tile_color 0xaaaaff
+ label "Maximum likelihood"
+ note_font_size 28
+ xpos 389
+ ypos -228
+ bdwidth 329
+ bdheight 280
+}
+Read {
+ inputs 0
+ file_type mov
+ file "C:/Users/Aksh Patel/Downloads/Hula_cin (1).mov"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ last 68
+ origlast 68
+ origset true
+ name Read1
+ xpos 463
+ ypos -489
+}
+set N86b6e800 [stack 0]
+Dot {
+ name Dot34
+ xpos -2104
+ ypos -456
+}
+Colorspace {
+ colorspace_out Cineon
+ name Colorspace2
+ xpos -2138
+ ypos -118
+}
+Dot {
+ name Dot46
+ xpos -2104
+ ypos -61
+}
+set N86b6dc00 [stack 0]
+VectorGenerator {
+ motionEstimation Regularized
+ Advanced 1
+ name VectorGenerator1
+ xpos -2138
+ ypos 37
+}
+set N86b6d800 [stack 0]
+Shuffle {
+ in motion
+ name Shuffle1
+ xpos -2000
+ ypos 43
+}
+Write {
+ file D:/Trinity/5c1/Data/HulaSub/Hula.Motion.%4d.tiff
+ file_type tiff
+ checkHashOnRead false
+ version 1
+ name Write1
+ xpos -2000
+ ypos 115
+}
+Read {
+ inputs 0
+ file_type tiff
+ file "E:/Sem 2/Motion Picture Engineering/3d-mrf/Hula.Motion.  47.tiff"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read7
+ xpos -3954
+ ypos -118
+}
+Read {
+ inputs 0
+ file_type tiff
+ file "E:/Sem 2/Motion Picture Engineering/without motion/Hula.Motion.  47.tiff"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read6
+ xpos -3131
+ ypos -112
+}
+Read {
+ inputs 0
+ file_type tiff
+ file "E:/Sem 2/Motion Picture Engineering/without motion/Hula.Motion.  47.tiff"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read8
+ xpos -3846
+ ypos -115
+}
+Read {
+ inputs 0
+ file_type tiff
+ file "E:/Sem 2/Motion Picture Engineering/2d-mrf/Hula.Motion.  47.tiff"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read3
+ xpos -3020
+ ypos -110
+}
+Read {
+ inputs 0
+ file_type tiff
+ file "E:/Sem 2/Motion Picture Engineering/2d-mrf/Hula.Motion.  47.tiff"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read9
+ xpos -3741
+ ypos -115
+}
+Read {
+ inputs 0
+ file_type mov
+ file "C:/Users/Aksh Patel/Downloads/Hula_cin (1).mov"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ last 68
+ origlast 68
+ origset true
+ colorspace Cineon
+ name Read2
+ xpos -3602
+ ypos -117
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge1
+ xpos -3788
+ ypos 220
+}
+Dot {
+ name Dot57
+ xpos -3754
+ ypos 700
+}
+Read {
+ inputs 0
+ file_type png
+ file "E:/Sem 2/Motion Picture Engineering/Assignment 1/ground truth/Hula.Fore.ACKGT.00047.png"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read4
+ xpos -2911
+ ypos -113
+}
+Read {
+ inputs 0
+ file_type tiff
+ file "E:/Sem 2/Motion Picture Engineering/3d-mrf/Hula.Motion.  47.tiff"
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ name Read5
+ xpos -3260
+ ypos -109
+}
+BlinkScript {
+ inputs 2
+ recompileCount 1
+ ProgramGroup 1
+ KernelDescription "2 \"EqualsTo\" iterate pixelWise bcd1be60cea15d2194548ece8f665c5b1fc4d609d87773aaf7743543845fc1e4 3 \"src\" Read Point \"ref\" Read Point \"dst\" Write Point 0 0 0"
+ kernelSource "kernel EqualsTo: ImageComputationKernel<ePixelWise> \{\n  Image<eRead, eAccessPoint, eEdgeClamped> src; // the input image (binary)\n  Image<eRead, eAccessPoint, eEdgeClamped> ref; // the reference image\n  // Checks if differences between two images is more than 1e6\n  // If it is .. that pel is coloured RED, otherwise its GREEN\n\n  Image<eWrite> dst; // the output image\n  \n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n    SampleType(dst) sample(0.0f);\n    SampleType(src) input = src();\n    SampleType(ref) ref_input = ref();\n    float error = fabs(input.x - ref_input.x);\n                   + fabs(input.y - ref_input.y)\n                   + fabs(input.z - ref_input.z);\n    if (error >0.000001)\n      sample.x = 1.0f;\n    else\n      sample.y = 1.0f;\n\n    dst() = sample;\n  \}\n\};"
+ rebuild ""
+ rebuild_finalise ""
+ name BlinkScript1
+ xpos -3095
+ ypos 242
+}
+Dot {
+ name Dot51
+ xpos -3061
+ ypos 697
+}
+push $N86b6e800
+Colorspace {
+ colorspace_out Cineon
+ name Colorspace1
+ xpos 463
+ ypos -377
+}
+Expression {
+ channel0 {rgba.red -rgba.green -rgba.blue none}
+ expr0 ((r-0.34413)*(r-0.34413))/0.00193
+ expr1 ((g-0.66213)*(g-0.66213))/0.00021
+ expr2 ((b-0.54517)*(b-0.54517))/0.000251
+ name Expression11
+ xpos 457
+ ypos -141
+}
+Expression {
+ expr0 r+g+b
+ expr1 r+g+b
+ expr2 r+g+b
+ name Sum_of_channel
+ xpos 457
+ ypos -111
+}
+set Nd1766c00 [stack 0]
+Dot {
+ name Dot56
+ xpos 337
+ ypos -108
+}
+Dot {
+ name Dot22
+ xpos 337
+ ypos -151
+}
+set Nd1766400 [stack 0]
+Dot {
+ name Dot40
+ xpos 337
+ ypos -396
+}
+Dot {
+ name Dot36
+ xpos -50
+ ypos -396
+}
+Dot {
+ name Dot70
+ xpos -858
+ ypos -396
+}
+set Nd1519000 [stack 0]
+Dot {
+ name Dot35
+ xpos -1295
+ ypos -396
+}
+Dot {
+ name Dot24
+ xpos -1295
+ ypos -91
+}
+set Nd1765400 [stack 0]
+Dot {
+ name Dot25
+ xpos -1295
+ ypos -31
+}
+set Nd1765000 [stack 0]
+Dot {
+ name Dot26
+ xpos -1295
+ ypos 49
+}
+set Nd1764c00 [stack 0]
+Dot {
+ name Dot27
+ xpos -1295
+ ypos 132
+}
+set Nd1764800 [stack 0]
+Dot {
+ name Dot28
+ xpos -1295
+ ypos 237
+}
+set Nd1764400 [stack 0]
+Dot {
+ name Dot73
+ xpos -1295
+ ypos 335
+}
+push $N86b6dc00
+Dot {
+ name Dot45
+ xpos -2379
+ ypos -61
+}
+TimeOffset {
+ time_offset 1
+ time ""
+ name TimeOffset2
+ xpos -2413
+ ypos 119
+}
+push $N86b6d800
+ShuffleCopy {
+ inputs 2
+ in2 motion
+ red red
+ green green
+ blue blue
+ black blue2
+ white alpha2
+ out2 backward
+ name ShuffleCopy1
+ xpos -2138
+ ypos 119
+}
+IDistort {
+ uv backward
+ filter Simon
+ name IDistort1
+ xpos -2138
+ ypos 182
+}
+Expression {
+ channel0 {rgba.red -rgba.green -rgba.blue none}
+ expr0 ((r-0.34413)*(r-0.34413))/0.00193
+ expr1 ((g-0.66213)*(g-0.66213))/0.00021
+ expr2 ((b-0.54517)*(b-0.54517))/0.000251
+ name Expression1
+ xpos -2138
+ ypos 254
+}
+Expression {
+ expr0 r+g+b
+ expr1 r+g+b
+ expr2 r+g+b
+ name Sum_of_channel1
+ xpos -2138
+ ypos 298
+}
+Expression {
+ expr0 "step( 60, r)"
+ expr1 "step( 60, g)"
+ expr2 "step( 60, b)"
+ channel3 none
+ name ET1
+ xpos -2138
+ ypos 378
+}
+Dot {
+ name Dot47
+ xpos -1616
+ ypos 381
+}
+set Nd172a400 [stack 0]
+Dot {
+ name Dot72
+ xpos -1616
+ ypos 335
+}
+set Nd14ce800 [stack 0]
+push $Nd1764400
+push $Nd14ce800
+Dot {
+ name Dot44
+ xpos -1616
+ ypos 237
+}
+set Nd172a000 [stack 0]
+push $Nd1764800
+push $Nd172a000
+Dot {
+ name Dot32
+ xpos -1616
+ ypos 135
+}
+set Nd1729c00 [stack 0]
+push $Nd1764c00
+push $Nd1729c00
+Dot {
+ name Dot31
+ xpos -1616
+ ypos 51
+}
+set Nd1729800 [stack 0]
+push $Nd1765000
+push $Nd1729800
+Dot {
+ name Dot30
+ xpos -1616
+ ypos -29
+}
+set Nd1729400 [stack 0]
+push $Nd1765400
+push $Nd1729400
+Dot {
+ name Dot29
+ xpos -1616
+ ypos -89
+}
+push $Nd1766c00
+Expression {
+ expr0 "step( 60, r)"
+ expr1 "step( 60, g)"
+ expr2 "step( 60, b)"
+ channel3 none
+ name ET
+ xpos 457
+ ypos -48
+}
+set Nd1728c00 [stack 0]
+Dot {
+ name Dot50
+ xpos 286
+ ypos -45
+}
+Dot {
+ name Dot49
+ xpos 286
+ ypos -194
+}
+Dot {
+ name Dot48
+ xpos 286
+ ypos -358
+}
+Dot {
+ name Dot37
+ xpos -161
+ ypos -358
+}
+Dot {
+ name Dot69
+ xpos -986
+ ypos -358
+}
+set Nd1519400 [stack 0]
+Dot {
+ name Dot38
+ xpos -1423
+ ypos -358
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 20
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_6
+ xpos -1457
+ ypos -98
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 20
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_7
+ xpos -1457
+ ypos -38
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 20
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_8
+ xpos -1457
+ ypos 42
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 21
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_9
+ xpos -1457
+ ypos 125
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 20
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_11
+ xpos -1457
+ ypos 228
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 20
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_17
+ xpos -1457
+ ypos 326
+}
+Dot {
+ name Dot52
+ xpos -1423
+ ypos 747
+}
+set Nd16c5c00 [stack 0]
+push $Nd16c5c00
+Erode {
+ channels all
+ size -2
+ blur 0.16
+ name Filter_for_smoothing
+ xpos -1214
+ ypos 738
+}
+Dot {
+ name Dot53
+ xpos -1104
+ ypos 747
+}
+push $Nd1519000
+Dot {
+ name Dot58
+ xpos -858
+ ypos -98
+}
+set Nd1581800 [stack 0]
+Dot {
+ name Dot59
+ xpos -858
+ ypos -38
+}
+set Nd1581400 [stack 0]
+Dot {
+ name Dot60
+ xpos -858
+ ypos 42
+}
+set Nd1581000 [stack 0]
+Dot {
+ name Dot61
+ xpos -858
+ ypos 125
+}
+set Nd1580c00 [stack 0]
+Dot {
+ name Dot62
+ xpos -858
+ ypos 230
+}
+push $Nd172a400
+Dot {
+ name Dot63
+ xpos -1179
+ ypos 381
+}
+Dot {
+ name Dot64
+ xpos -1179
+ ypos 230
+}
+set Nd151bc00 [stack 0]
+push $Nd1580c00
+push $Nd151bc00
+Dot {
+ name Dot65
+ xpos -1179
+ ypos 128
+}
+set Nd151b800 [stack 0]
+push $Nd1581000
+push $Nd151b800
+Dot {
+ name Dot66
+ xpos -1179
+ ypos 44
+}
+set Nd151b400 [stack 0]
+push $Nd1581400
+push $Nd151b400
+Dot {
+ name Dot67
+ xpos -1179
+ ypos -36
+}
+set Nd151b000 [stack 0]
+push $Nd1581800
+push $Nd151b000
+Dot {
+ name Dot68
+ xpos -1179
+ ypos -96
+}
+push $Nd1519400
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 22
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise bf650e01d520717f93ba200be3a3371329cdc992d12e606e409821f31ebb0f88 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n  float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\n//float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_12
+ xpos -1020
+ ypos -105
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 22
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise 7860924601b5e49bfdbd9fb0b4928b78755368605f08a92bbff182bba0ea46e6 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\n//float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_13
+ xpos -1020
+ ypos -45
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 22
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise bf650e01d520717f93ba200be3a3371329cdc992d12e606e409821f31ebb0f88 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n  float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\n//float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_14
+ xpos -1020
+ ypos 35
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 24
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise ddb521de69e1f37c679c90e3d36bedd2615226992f9f2ea8760a4786cd0cdd41 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\n//float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_15
+ xpos -1020
+ ypos 118
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 22
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise bf650e01d520717f93ba200be3a3371329cdc992d12e606e409821f31ebb0f88 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n  float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\n//float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_16
+ xpos -1020
+ ypos 221
+}
+Dot {
+ name Dot71
+ xpos -986
+ ypos 730
+}
+push $Nd1766400
+Dot {
+ name Dot8
+ xpos 153
+ ypos -151
+}
+set Nd16c5800 [stack 0]
+Dot {
+ name Dot10
+ xpos -50
+ ypos -151
+}
+set Nd16c5400 [stack 0]
+Dot {
+ name Dot9
+ xpos -261
+ ypos -151
+}
+Dot {
+ name Dot11
+ xpos -261
+ ypos -57
+}
+set Nd16c4c00 [stack 0]
+Dot {
+ name Dot13
+ xpos -261
+ ypos 6
+}
+set Nd16c4800 [stack 0]
+Dot {
+ name Dot14
+ xpos -261
+ ypos 86
+}
+set Nd16c4400 [stack 0]
+Dot {
+ name Dot15
+ xpos -261
+ ypos 169
+}
+set Nd1683c00 [stack 0]
+Dot {
+ name Dot16
+ xpos -261
+ ypos 274
+}
+set Nd1683800 [stack 0]
+Dot {
+ name Dot42
+ xpos -261
+ ypos 364
+}
+push $Nd1728c00
+Dot {
+ name Dot55
+ xpos 355
+ ypos -45
+}
+Dot {
+ name Dot7
+ xpos 355
+ ypos -86
+}
+set Nd1682c00 [stack 0]
+Dot {
+ name Dot18
+ xpos 355
+ ypos -316
+}
+Dot {
+ name Dot54
+ xpos -389
+ ypos -316
+}
+Dot {
+ name Dot6
+ xpos -389
+ ypos -162
+}
+set Nd1682000 [stack 0]
+TimeOffset {
+ time_offset 1
+ time ""
+ name TimeOffset1
+ xpos -616
+ ypos -165
+}
+Dot {
+ name Dot12
+ xpos -582
+ ypos -57
+}
+set Nd1681c00 [stack 0]
+Dot {
+ name Dot17
+ xpos -582
+ ypos 6
+}
+set Nd1681800 [stack 0]
+Dot {
+ name Dot19
+ xpos -582
+ ypos 86
+}
+set Nd1681400 [stack 0]
+Dot {
+ name Dot20
+ xpos -582
+ ypos 170
+}
+set Nd1681000 [stack 0]
+Dot {
+ name Dot21
+ xpos -582
+ ypos 274
+}
+set Nd1680c00 [stack 0]
+Dot {
+ name Dot43
+ xpos -582
+ ypos 364
+}
+push $Nd1683800
+push $Nd1680c00
+push $Nd1683c00
+push $Nd1681000
+push $Nd16c4400
+push $Nd1681400
+push $Nd16c4800
+push $Nd1681800
+push $Nd16c4c00
+push $Nd1681c00
+push $Nd1682000
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 24
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x47 5 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_1
+ xpos -423
+ ypos -66
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 21
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x47 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_2
+ xpos -423
+ ypos -3
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 21
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x47 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_3
+ xpos -423
+ ypos 77
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 21
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x47 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_4
+ xpos -423
+ ypos 160
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 22
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x47 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_5
+ xpos -423
+ ypos 265
+}
+BlinkScript {
+ inputs 3
+ kernelSourceFile MRF_Temporal_1
+ recompileCount 20
+ ProgramGroup 1
+ KernelDescription "2 \"MRF_Temporal_1\" iterate componentWise d958dd02f9004787ab922a64ae2a25794043221a6f3200b5af29772e9ae47f45 4 \"src\" Read Random \"src_past\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF_Temporal_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> src_past; // input past image \n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy in 3D\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 25.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n  // 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n\n  // Previous frame 8-neighborhood pels\n    float past_pel = src_past(pos.x, pos.y);\n    float left_past_pel = src_past(pos.x - 1, pos.y);\n    float right_past_pel = src_past(pos.x + 1, pos.y);\n    float bottom_past_pel = src_past(pos.x, pos.y + 1);\n    float top_past_pel = src_past(pos.x, pos.y - 1);\n\n    float past_dl_pel = src_past(pos.x -1, pos.y -1);\n    float past_dr_pel = src_past(pos.x + 1, pos.y - 1);\n    float past_ddl_pel = src_past(pos.x - 1, pos.y + 1);\n    float past_ddr_pel = src_past(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0\n //   float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel + left_past_pel + right_past_pel + bottom_past_pel + top_past_pel + dl_pel + dr_pel + ddl_pel +ddr_pel + past_dl_pel + past_dr_pel + past_ddl_pel +  past_ddr_pel;\n\nfloat e_sp0 = left_pel + right_pel + top_pel + bottom_pel + past_pel;\n  // Calculating spatial energy for output = 1\n    //float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel) + (1 - right_past_pel) + (1 - left_past_pel) + (1 - bottom_past_pel) + (1 - top_past_pel) + (1 - dl_pel) + (1 - dr_pel) + (1 - ddl_pel) + (1 - ddr_pel) + (1 - past_dl_pel) + (1 - past_dr_pel)+  (1 - past_ddl_pel)+ (1 - past_ddr_pel);\n\nfloat e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel) + (1 - past_pel);\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n  // Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF_Temporal_1_Smoothness Lambda" {{curve x1 20 x47 20 x49 20}}
+ rebuild_finalise ""
+ name MRF_Temporal_10
+ xpos -423
+ ypos 355
+}
+Dot {
+ name Dot41
+ xpos -389
+ ypos 652
+}
+push $Nd16c5400
+Dot {
+ name Dot1
+ xpos -50
+ ypos -81
+}
+Dot {
+ name Dot2
+ xpos -50
+ ypos -5
+}
+set Nd164a000 [stack 0]
+Dot {
+ name Dot3
+ xpos -50
+ ypos 78
+}
+set Nd1649c00 [stack 0]
+Dot {
+ name Dot4
+ xpos -50
+ ypos 152
+}
+set Nd1649800 [stack 0]
+Dot {
+ name Dot5
+ xpos -50
+ ypos 243
+}
+set Nd1649400 [stack 0]
+Dot {
+ name Dot39
+ xpos -50
+ ypos 341
+}
+push $Nd1649400
+push $Nd1649800
+push $Nd1649c00
+push $Nd164a000
+push $Nd16c5800
+push $Nd1682c00
+BlinkScript {
+ inputs 2
+ kernelSourceFile MRF_ML
+ recompileCount 26
+ ProgramGroup 1
+ KernelDescription "2 \"MRF2D_1\" iterate componentWise e8bdfc0d87f239f7a8f5263a03fde7c8802ea3494dd18a644238200bfe0a6336 3 \"src\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF2D_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda=20;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 20.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n// 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0,1\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + dl_pel + dr_pel + ddl_pel + ddr_pel;\n\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel)  + (1 - dl_pel)+ (1 -dr_pel )+ (1 -ddl_pel )+ (1 -ddr_pel ) ;\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n    \n// Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF2D_1_Smoothness Lambda" {{curve x1 20 x46 20}}
+ rebuild_finalise ""
+ name MRF2D_1
+ note_font_color 0xffffffff
+ xpos 119
+ ypos -95
+}
+BlinkScript {
+ inputs 2
+ kernelSourceFile MRF_ML
+ recompileCount 26
+ ProgramGroup 1
+ KernelDescription "2 \"MRF2D_1\" iterate componentWise e8bdfc0d87f239f7a8f5263a03fde7c8802ea3494dd18a644238200bfe0a6336 3 \"src\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF2D_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda=20;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 20.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n// 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0,1\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + dl_pel + dr_pel + ddl_pel + ddr_pel;\n\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel)  + (1 - dl_pel)+ (1 -dr_pel )+ (1 -ddl_pel )+ (1 -ddr_pel ) ;\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n    \n// Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF2D_1_Smoothness Lambda" {{curve x1 20 x46 20}}
+ rebuild_finalise ""
+ name MRF2D_2
+ note_font_color 0xffffffff
+ xpos 119
+ ypos -14
+}
+BlinkScript {
+ inputs 2
+ kernelSourceFile MRF_ML
+ recompileCount 28
+ ProgramGroup 1
+ KernelDescription "2 \"MRF2D_1\" iterate componentWise e8bdfc0d87f239f7a8f5263a03fde7c8802ea3494dd18a644238200bfe0a6336 3 \"src\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF2D_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda=20;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 20.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n// 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0,1\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + dl_pel + dr_pel + ddl_pel + ddr_pel;\n\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel)  + (1 - dl_pel)+ (1 -dr_pel )+ (1 -ddl_pel )+ (1 -ddr_pel ) ;\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n    \n// Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF2D_1_Smoothness Lambda" {{curve x1 20 x46 20}}
+ rebuild_finalise ""
+ name MRF2D_3
+ note_font_color 0xffffffff
+ xpos 119
+ ypos 69
+}
+BlinkScript {
+ inputs 2
+ kernelSourceFile MRF_ML
+ recompileCount 25
+ ProgramGroup 1
+ KernelDescription "2 \"MRF2D_1\" iterate componentWise e8bdfc0d87f239f7a8f5263a03fde7c8802ea3494dd18a644238200bfe0a6336 3 \"src\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF2D_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda=20;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 20.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n// 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0,1\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + dl_pel + dr_pel + ddl_pel + ddr_pel;\n\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel)  + (1 - dl_pel)+ (1 -dr_pel )+ (1 -ddl_pel )+ (1 -ddr_pel ) ;\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n    \n// Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF2D_1_Smoothness Lambda" {{curve x1 20 x46 20}}
+ rebuild_finalise ""
+ name MRF2D_4
+ note_font_color 0xffffffff
+ xpos 119
+ ypos 143
+}
+BlinkScript {
+ inputs 2
+ kernelSourceFile MRF_ML
+ recompileCount 25
+ ProgramGroup 1
+ KernelDescription "2 \"MRF2D_1\" iterate componentWise e8bdfc0d87f239f7a8f5263a03fde7c8802ea3494dd18a644238200bfe0a6336 3 \"src\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF2D_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda=20;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 20.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n// 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0,1\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + dl_pel + dr_pel + ddl_pel + ddr_pel;\n\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel)  + (1 - dl_pel)+ (1 -dr_pel )+ (1 -ddl_pel )+ (1 -ddr_pel ) ;\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n    \n// Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF2D_1_Smoothness Lambda" {{curve x1 20 x46 20}}
+ rebuild_finalise ""
+ name MRF2D_5
+ note_font_color 0xffffffff
+ xpos 119
+ ypos 234
+}
+BlinkScript {
+ inputs 2
+ kernelSourceFile MRF_ML
+ recompileCount 25
+ ProgramGroup 1
+ KernelDescription "2 \"MRF2D_1\" iterate componentWise e8bdfc0d87f239f7a8f5263a03fde7c8802ea3494dd18a644238200bfe0a6336 3 \"src\" Read Random \"l_energy\" Read Random \"dst\" Write Point 1 \"Smoothness Lambda\" Float 1 AACgQA== 1 \"Lambda\" 1 1 1 \"alpha\" Float 1 1 AAAAAA=="
+ kernelSource "kernel MRF2D_1: ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src; // input image (binary)\n  Image<eRead, eAccessRandom, eEdgeClamped> l_energy; // Likelihood energy\n// 4 Connected MRF with Input energy\n\n  Image<eWrite> dst; // output Image\n\n  param:\n    float Lambda=20;\n\n  local:\n    float alpha; // Penalty for setting segmentation = 1\n\n  //Define user parameters\n  void define() \{\n    defineParam(Lambda, \"Smoothness Lambda\", 5.0f);\n  \}\n\n  void init() \{\n    alpha = 20.0; // 95% confidence interval\n  \}\n\n  // pos gives the position of the kernel in the output image\n  void process(int2 pos) \{\n// 8- neighborhood pels\n    float left_pel = src(pos.x - 1, pos.y);\n    float right_pel = src(pos.x + 1, pos.y);\n    float bottom_pel = src(pos.x, pos.y + 1);\n    float top_pel = src(pos.x, pos.y - 1);\n\n    float dl_pel = src(pos.x -1, pos.y -1);\n    float dr_pel = src(pos.x + 1, pos.y - 1);\n    float ddl_pel = src(pos.x - 1, pos.y + 1);\n    float ddr_pel = src(pos.x + 1, pos.y + 1);\n    \n  // Calculating spatial energy for output = 0,1\n    float e_sp0 = left_pel + right_pel + top_pel + bottom_pel + dl_pel + dr_pel + ddl_pel + ddr_pel;\n\n    float e_sp1 = (1 - left_pel) + (1 - right_pel) + (1 - top_pel) + (1 - bottom_pel)  + (1 - dl_pel)+ (1 -dr_pel )+ (1 -ddl_pel )+ (1 -ddr_pel ) ;\n\n\n//Finding MRF for foreground and background matte\n    float e_0 = l_energy(pos.x, pos.y) + e_sp0*Lambda;\n    float e_1 = alpha + e_sp1*Lambda;\n    \n// Energy minimization condition\n    if (e_0 < e_1)\n      dst() = 0;\n    else\n      dst() = 1;\n  \}\n\};"
+ rebuild ""
+ "MRF2D_1_Smoothness Lambda" {{curve x1 20 x46 20}}
+ rebuild_finalise ""
+ name MRF2D_6
+ note_font_color 0xffffffff
+ xpos 119
+ ypos 332
+}
+Dot {
+ name Dot33
+ xpos 153
+ ypos 628
+}
+push $Nd1728c00
+Dot {
+ name Dot23
+ xpos 491
+ ypos 623
+}
+Viewer {
+ inputs 6
+ frame_range 1-68
+ input_number 2
+ name Viewer1
+ xpos -372
+ ypos 1533
+}
